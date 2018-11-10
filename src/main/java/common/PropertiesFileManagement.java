@@ -1,0 +1,38 @@
+package common;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+public class PropertiesFileManagement {
+
+	public String getPropValues(String key) throws IOException {
+		Properties prop = new Properties();
+		String propFileName = "config.properties";
+		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+		if (inputStream != null) {
+			prop.load(inputStream);
+		} else {
+			throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+		}
+		return prop.getProperty(key);
+	}
+
+	public int get(String key) {
+		Properties prop = new Properties();
+		String propFileName = "config.properties";
+		InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+		try {
+			if (inputStream != null) {
+				prop.load(inputStream);
+			} else {
+				throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return (int) prop.get(key);
+	}
+}

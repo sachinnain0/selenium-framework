@@ -5,6 +5,7 @@ import java.util.Map;
 
 import common.Hooks;
 import common.PropertiesFileManagement;
+import common.ScreenshotsManagement;
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
@@ -18,6 +19,7 @@ public class LoginToApplication {
 	public void user_is_on_Home_Page() throws Throwable {
 		PropertiesFileManagement prop = new PropertiesFileManagement();
 		Hooks.webDriver.get(prop.getPropValues("applicationUrl"));
+		ScreenshotsManagement.takeScreenshot();
 	}
 
 	@When("^User logins with valid credentails$")
@@ -27,6 +29,7 @@ public class LoginToApplication {
 	   
 	   loginPage.textBoxUserName.sendKeys(data.get(0).get("UserName"));
 	   loginPage.textBoxPassword.sendKeys(data.get(0).get("Password"));
+	   ScreenshotsManagement.takeScreenshot();
 	   loginPage.buttonLogin.click();
 	}
 

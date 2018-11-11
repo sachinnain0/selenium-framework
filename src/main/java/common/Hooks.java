@@ -21,7 +21,11 @@ public class Hooks {
 	}
 	
 	@After
-	public void afterScenario() {
+	public void afterScenario(Scenario scenario) {
+		if(scenario.isFailed()) {
+			ScreenshotsManagement.takeScreenshot();
+		}
+		
 		if(webDriver!=null) {
 			webDriver.quit();
 		}

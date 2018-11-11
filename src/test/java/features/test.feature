@@ -1,5 +1,5 @@
 Feature: To search the flight for given source and destination. 
-
+@Demo
 Scenario Outline: To search the flight for given source and destination 
 	Given User launches the application
 	When User logins with valid credentails

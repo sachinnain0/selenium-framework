@@ -3,6 +3,7 @@ package steps;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -11,7 +12,6 @@ import common.ScreenshotsManagement;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import junit.framework.Assert;
 import page_objects.HomePage;
 import page_objects.SystemUsers;
 
@@ -45,6 +45,7 @@ public void validates_if_user_exists_in_HRM_portal(DataTable dataTable) throws T
 	
 	if(resultSetUserName.size()==1){
 		Assert.assertEquals(data.get(0).get("SearchUserName"), resultSetUserName.get(0).getText());
+		
 	}
 	ScreenshotsManagement.takeScreenshot();
 }

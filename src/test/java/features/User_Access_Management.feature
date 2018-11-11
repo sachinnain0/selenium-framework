@@ -16,3 +16,4 @@ Scenario Outline: To search the user to the HRM portal
 	Examples: 
 		|UserName|Password|SearchUserName| UserRole |
 		|Admin   |admin123|Admin         | Admin    |
+		|Admin   |admin123|Admin1        | Admin    |

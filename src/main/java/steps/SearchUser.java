@@ -43,7 +43,7 @@ public void validates_if_user_exists_in_HRM_portal(DataTable dataTable) throws T
 	List<WebElement> resultSetUserName = sysUsers.labelUserNameResultTable;
 	
 	if(resultSetUserName.size()==1){
-		if(data.get(0).get("SearchUserName").equalsIgnoreCase(resultSetUserName.get(0).getText())) {
+		if(!data.get(0).get("SearchUserName").equalsIgnoreCase(resultSetUserName.get(0).getText())) {
 			throw new Exception("Incorrect search result- Expected: "+data.get(0).get("SearchUserName")+" but Actaul: "+resultSetUserName.get(0).getText());
 		}
 	}

@@ -2,6 +2,8 @@ package common;
 
 import java.io.IOException;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import cucumber.api.Scenario;
@@ -23,7 +25,8 @@ public class Hooks {
 	@After
 	public void afterScenario(Scenario scenario) {
 		if(scenario.isFailed()) {
-			ScreenshotsManagement.takeScreenshot();
+			final byte[] screenshot = ((TakesScreenshot) Hooks.webDriver).getScreenshotAs(OutputType.BYTES);
+		    Hooks.scenario.embed(screenshot, "image/png");
 		}
 		
 		if(webDriver!=null) {
